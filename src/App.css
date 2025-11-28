@@ -6,3 +6,10 @@
 .font-baloo-bhai{
     font-family: "Baloo Bhai 2", sans-serif;
 }
+
+.footer-bg {
+  background-image: url('./assets/footer.png');
+  background-size: 100% auto;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}

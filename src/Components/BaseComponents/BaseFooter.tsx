@@ -1,5 +1,4 @@
 import BaseForm from './BaseForm'
-import formImage from "../../assets/footer.png"
 import footerLogo from "../../assets/footerLogo.png"
 import { footerConstants } from '../../Constants/footerConstants'
 
@@ -7,12 +6,7 @@ export default function BaseFooter() {
   return (
     <>
       <div
-        className="flex flex-col items-center justify-center text-center bg-[#F3F7FB] py-16 md:py-28 bg-no-repeat min-h-[450px] sm:minh-[500px] md:min-h-[600px] xl:min-h-[800px]"
-        style={{
-          backgroundImage: `url(${formImage})`,
-          backgroundSize: '100% auto',
-          backgroundPosition: 'bottom center',
-        }}
+        className="flex flex-col items-center justify-center text-center bg-[#F3F7FB] py-16 md:py-28 bg-no-repeat min-h-[450px] sm:minh-[500px] md:min-h-[600px] xl:min-h-[800px] footer-bg"
       >
         <div className="space-y-3 font-robotto mb-6 px-2">
           <p className="uppercase text-[#1262AE] font-bold text-base md:text-lg">
@@ -23,7 +17,7 @@ export default function BaseFooter() {
           </p>
         </div>
 
-        <div className="w-full max-w-xl px-2 md:px-0">
+        <div className="w-full max-w-xl mx-auto flex justify-center items-center px-4">
           <BaseForm
             title={footerConstants?.form?.title}
             namePlaceholder={footerConstants?.form?.namePlaceholder}
@@ -34,13 +28,13 @@ export default function BaseFooter() {
       </div>
 
       <footer className="w-full -mt-2 text-white bg-linear-to-r from-[#0B5BA8] to-[#299BD8] py-8 md:py-10">
-        <div className="container mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
+        <div className="container mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-10 md:gap-6 items-start">
           <div className="space-y-4 text-center md:text-left">
             <div className="flex justify-center md:justify-start">
               <img src={footerLogo} alt={footerConstants?.alt} className="w-32 md:w-40" />
             </div>
 
-            <p className="text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
+            <p className="text-md leading-relaxed mx-auto md:mx-0">
               {footerConstants?.description}
             </p>
 
@@ -52,9 +46,12 @@ export default function BaseFooter() {
               ))}
             </div>
           </div>
-          <div className="hidden md:block border-l border-white/30 mx-auto"></div>
-          <div className="md:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left">
-            {Object.entries(footerConstants.links).map(([key, items], idx) => (
+          <div className="hidden md:flex justify-center">
+            <div className="border-l border-white/30 h-40"></div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left">
+            {Object.entries(footerConstants.links).map(([_, items], idx) => (
               <div key={idx}>
                 <h3 className="font-semibold text-lg mb-3">
                   {footerConstants.columns[idx]}
