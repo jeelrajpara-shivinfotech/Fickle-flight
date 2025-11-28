@@ -3,8 +3,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import logoImage from "../../assets/logo.png";
 import profilePicture from "../../assets/profile-picture.png";
 import { Link } from "react-router-dom";
-import { Routes } from "../../Routes/RouteConstants";
-import { navConstants } from "../../Constants/navbarConstants";
+import { navConstants, navLinks } from "../../Constants/navbarConstants";
 import bellIcon from "../../assets/notification bell.png"
 
 const BaseNavbar = () => {
@@ -18,18 +17,24 @@ const BaseNavbar = () => {
             <img src={logoImage} alt={navConstants?.altText} />
           </div>
           <div className="hidden md:flex items-center gap-8 text-[#424242]">
-            <Link to={Routes?.HOME} className="text-blue-600 cursor-pointer">{navConstants.explore}</Link>
-            <Link to={Routes?.ROOT} className="hover:text-blue-600 cursor-pointer">{navConstants?.search}</Link>
-            <Link to={Routes?.ROOT} className="hover:text-blue-600 cursor-pointer">{navConstants.hotel}</Link>
-            <Link to={Routes?.ROOT} className="hover:text-blue-600 cursor-pointer">{navConstants?.offers}</Link>
+            {navLinks.map((item) => (
+              <Link
+                key={item.label}
+                to={item.path}
+                className={`${item.active ? "text-blue-600" : "hover:text-blue-600"} cursor-pointer`}
+              >
+                {item.label}
+              </Link>
+            ))}
 
-            <img src={bellIcon} alt={navConstants?.altText} />
+            <img src={bellIcon} alt={navConstants.altText} />
             <img
               src={profilePicture}
               className="w-9 h-9 rounded-full cursor-pointer"
-              alt={navConstants?.altText}
+              alt={navConstants.altText}
             />
           </div>
+
           <button
             className="md:hidden text-2xl"
             onClick={() => setOpen(true)}
@@ -53,19 +58,26 @@ const BaseNavbar = () => {
           <FiX className="text-2xl cursor-pointer" onClick={() => setOpen(false)} />
         </div>
         <div className="flex flex-col p-6 gap-6 text-[#424242]">
-          <Link to={Routes?.HOME} className="text-blue-600 cursor-pointer">{navConstants?.explore}</Link>
-          <Link to={Routes?.ROOT} className="hover:text-blue-600 cursor-pointer">{navConstants?.search}</Link>
-          <Link to={Routes?.ROOT} className="hover:text-blue-600 cursor-pointer">{navConstants?.hotel}</Link>
-          <Link to={Routes?.ROOT} className="hover:text-blue-600 cursor-pointer">{navConstants?.offers}</Link>
+          {navLinks.map((item) => (
+            <Link
+              key={item.label}
+              to={item.path}
+              className={`${item.active ? "text-blue-600" : "hover:text-blue-600"} cursor-pointer`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
           <div className="flex items-center gap-4 mt-4">
-            <img src={bellIcon} alt={navConstants?.altText} />
+            <img src={bellIcon} alt={navConstants.altText} />
             <img
               src={profilePicture}
-              alt={navConstants?.altText}
+              alt={navConstants.altText}
               className="w-9 h-9 rounded-full cursor-pointer"
             />
           </div>
         </div>
+
       </div>
     </>
   );
