@@ -1,7 +1,7 @@
 import React from "react";
 
 type BaseButtonProps = {
-  text: string;
+  text?: string;
   textColor?: string;
   bgColor?: string;
   width?: string;
@@ -28,12 +28,13 @@ const BaseButton: React.FC<BaseButtonProps> = ({
         ${bgColor}
         ${textColor}
         py-3 
-        rounded-md
+        rounded-sm
         font-medium 
         transition 
         duration-200
         disabled:opacity-50 
         disabled:cursor-not-allowed
+        cursor-pointer
         ${className}
       `}
     >
