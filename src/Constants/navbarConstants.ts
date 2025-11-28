@@ -3,5 +3,6 @@ export const navConstants = {
     search : "Search",
     hotel : "Hotels",
     offers : "Offers",
-    menu : "Menu"
+    menu : "Menu",
+    altText : "Icon"
 }
