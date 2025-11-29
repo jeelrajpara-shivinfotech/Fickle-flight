@@ -12,7 +12,7 @@ type HotelCardProps = {
     price?: string;
 };
 
-export default function BaseHotelCard({
+export default function HotelCard({
     image,
     heading,
     title,

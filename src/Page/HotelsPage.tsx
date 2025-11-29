@@ -1,6 +1,6 @@
 import { hotelConstants, hotelFilters, hotels } from "../Constants/hotelsConstants";
 import filterImage from "../assets/filters.png"
-import BaseHotelCard from "../Components/common/BaseHotelCard";
+import BaseHotelCard from "../Components/common/HotelCard";
 import heroImage from "../assets/hero.png"
 import BaseButton from "../Components/BaseComponents/BaseButton";
 
