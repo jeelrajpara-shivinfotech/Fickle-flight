@@ -1,8 +1,8 @@
 import { filterSections, flightResults, recentlyBooked, searchConst } from "../Constants/SearchConstants";
-import RecentBooking from "./BaseComponents/BaseBookingCard";
+import RecentBooking from "./common/RecentBookingCard";
 import BaseButton from "./BaseComponents/BaseButton";
-import FlightCard from "./BaseComponents/BaseFlightCard";
-import BaseCheckbox from "./BaseComponents/BaseCheckbox";
+import FlightCard from "./common/FlightCard";
+import BaseCheckbox from "./common/Checkbox";
 export default function FlightResults() {
     return (
         <div className="w-full flex justify-center py-10 bg-[#f7f9fc]">
