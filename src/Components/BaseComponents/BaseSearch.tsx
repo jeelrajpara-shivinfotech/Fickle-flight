@@ -26,67 +26,78 @@ export default function BaseSearch({
   placeholder3,
   buttonTitle
 }: BaseSearchProps) {
-  const [tripType, setTripType] = useState<"return" | "oneway">("oneway");
+const [tripType, setTripType] = useState<"return" | "oneway">("oneway");
+const hideRadios = !returnLabel && !onewayLabel;
 
   return (
     <div className="w-full flex justify-center mt-10 font-robotto">
-      <div className="bg-white rounded-md shadow-lg p-6 max-w-5xl border border-gray-200">
+      <div className="bg-white rounded-md shadow-lg p-6 w-full border border-gray-200">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold tracking-wide uppercase">
             {title ?? ""}
           </h2>
 
-          <div className="flex gap-6 text-sm">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                name="trip"
-                checked={tripType === "return"}
-                onChange={() => setTripType("return")}
-              />
-              {returnLabel ?? ""}
-            </label>
+          {!hideRadios && (
+            <div className="flex gap-6 text-sm">
+              
+              {returnLabel && (
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="trip"
+                    checked={tripType === "return"}
+                    onChange={() => setTripType("return")}
+                  />
+                  {returnLabel ?? ""}
+                </label>
+              )}
 
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                name="trip"
-                checked={tripType === "oneway"}
-                onChange={() => setTripType("oneway")}
-              />
-              {onewayLabel ?? ""}
-            </label>
-          </div>
+              {onewayLabel && (
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="trip"
+                    checked={tripType === "oneway"}
+                    onChange={() => setTripType("oneway")}
+                  />
+                  {onewayLabel ?? ""}
+                </label>
+              )}
+
+            </div>
+          )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="relative w-full max-w-md">
-            <label className="absolute -top-3 left-4 bg-white px-1 text-gray-600 text-sm">
+          <div className="relative w-full">
+            <label className="absolute -top-3 left-3 bg-white px-1 text-gray-600 text-sm">
               {label1 ?? ""}
             </label>
             <input
               type="text"
               defaultValue={placeholder1 ?? ""}
-              className="w-full border border-gray-300 rounded-sm px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+              className="w-full border border-gray-300 rounded-sm px-4 py-3 text-sm"
             />
           </div>
-          <div className="relative w-full max-w-md">
-            <label className="absolute -top-3 left-4 bg-white px-1 text-gray-600 text-sm">
+
+          <div className="relative w-full">
+            <label className="absolute -top-3 left-3 bg-white px-1 text-gray-600 text-sm">
               {label2 ?? ""}
             </label>
             <input
               type="text"
               defaultValue={placeholder2 ?? ""}
-              className="w-full border border-gray-300 rounded-sm px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+              className="w-full border border-gray-300 rounded-sm px-4 py-3 text-sm"
             />
           </div>
-          <div className="relative w-full max-w-md">
-            <label className="absolute -top-3 left-4 bg-white px-1 text-gray-600 text-sm flex items-center gap-2">
+
+          <div className="relative w-full">
+            <label className="absolute -top-3 left-3 bg-white px-1 text-gray-600 text-sm">
               {label3 ?? ""}
             </label>
             <input
               type="date"
-              defaultValue={placeholder3 ?? ""}
-              className="w-full border border-gray-300 rounded-sm px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+              defaultValue={placeholder3 ?? ""} 
+              className="w-full border border-gray-300 rounded-sm px-4 py-3 text-sm"
             />
           </div>
           <div className="flex items-end">
