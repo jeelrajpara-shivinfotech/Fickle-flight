@@ -10,7 +10,7 @@ export const navConstants = {
 
 export const navLinks = [
   { label: navConstants.explore, path: Routes.HOME, active: true },
-  { label: navConstants.search, path: Routes.ROOT },
+  { label: navConstants.search, path: Routes.SEARCH },
   { label: navConstants.hotel, path: Routes.ROOT },
   { label: navConstants.offers, path: Routes.ROOT },
 ];
