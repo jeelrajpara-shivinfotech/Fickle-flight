@@ -1,13 +1,14 @@
-import React from "react";
+import React, { type ReactNode } from "react";
 
 type BaseButtonProps = {
-  text?: string;
+  text?: ReactNode;
   textColor?: string;
   bgColor?: string;
   width?: string;
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
+  borderRadius?: string;
 };
 
 const BaseButton: React.FC<BaseButtonProps> = ({
@@ -17,6 +18,7 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   width,
   onClick,
   disabled = false,
+  borderRadius = "rounded-sm",  
   className = "",
 }) => {
   return (
@@ -27,9 +29,9 @@ const BaseButton: React.FC<BaseButtonProps> = ({
         ${width}
         ${bgColor}
         ${textColor}
-        py-3 
-        rounded-sm
-        font-medium 
+        ${borderRadius}
+        py-3
+        font-medium
         transition 
         duration-200
         disabled:opacity-50 

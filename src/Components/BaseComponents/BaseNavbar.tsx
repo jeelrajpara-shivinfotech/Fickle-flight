@@ -2,13 +2,14 @@ import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import logoImage from "../../assets/logo.png";
 import profilePicture from "../../assets/profile-picture.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { navConstants, navLinks } from "../../Constants/navbarConstants";
 import bellIcon from "../../assets/notification bell.png"
+import BaseButton from "./BaseButton";
 
 const BaseNavbar = () => {
   const [open, setOpen] = useState(false);
-
+  const location = useLocation()
   return (
     <>
       <nav className="w-full border-b bg-white border-gray-100 shadow-sm font-roboto">
@@ -17,16 +18,18 @@ const BaseNavbar = () => {
             <img src={logoImage} alt={navConstants?.altText} />
           </div>
           <div className="hidden md:flex items-center gap-8 text-[#424242]">
-            {navLinks.map((item) => (
-              <Link
-                key={item.label}
-                to={item.path}
-                className={`${item.active ? "text-blue-600" : "hover:text-blue-600"} cursor-pointer`}
-              >
-                {item.label}
-              </Link>
-            ))}
-
+            {navLinks.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  className={`${isActive ? "text-[#1262AF]" : "hover:text-[#1262AF]"} cursor-pointer`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <img src={bellIcon} alt={navConstants.altText} />
             <img
               src={profilePicture}
@@ -34,13 +37,11 @@ const BaseNavbar = () => {
               alt={navConstants.altText}
             />
           </div>
-
-          <button
+          <BaseButton
             className="md:hidden text-2xl"
             onClick={() => setOpen(true)}
-          >
-            <FiMenu />
-          </button>
+            text={<FiMenu />}
+          />
         </div>
       </nav>
       {open && (
@@ -58,16 +59,18 @@ const BaseNavbar = () => {
           <FiX className="text-2xl cursor-pointer" onClick={() => setOpen(false)} />
         </div>
         <div className="flex flex-col p-6 gap-6 text-[#424242]">
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              className={`${item.active ? "text-blue-600" : "hover:text-blue-600"} cursor-pointer`}
-            >
-              {item.label}
-            </Link>
-          ))}
-
+          {navLinks.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={item.label}
+                to={item.path}
+                className={`${isActive ? "text-[#1262AF]" : "hover:text-[#1262AF]"} cursor-pointer`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <div className="flex items-center gap-4 mt-4">
             <img src={bellIcon} alt={navConstants.altText} />
             <img
